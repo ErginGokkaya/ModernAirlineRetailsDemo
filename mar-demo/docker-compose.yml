@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: mar-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: mar_user
+      POSTGRES_PASSWORD: mar_pass
+      POSTGRES_DB: mar_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - mar_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  mar_postgres_data:

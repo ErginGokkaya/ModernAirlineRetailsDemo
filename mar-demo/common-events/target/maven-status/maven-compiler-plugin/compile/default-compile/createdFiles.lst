@@ -1,0 +1,9 @@
+com\mar\common\events\enums\OrderStatus.class
+com\mar\common\events\order\OrderConfirmedEvent.class
+com\mar\common\events\topics\KafkaTopics.class
+com\mar\common\events\order\OrderCreatedEvent.class
+com\mar\common\events\BaseEvent.class
+com\mar\common\events\payment\PaymentFailedEvent.class
+com\mar\common\events\payment\PaymentRequestedEvent.class
+com\mar\common\events\order\OrderCancelledEvent.class
+com\mar\common\events\payment\PaymentCompletedEvent.class

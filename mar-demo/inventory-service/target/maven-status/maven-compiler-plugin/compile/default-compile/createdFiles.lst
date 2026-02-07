@@ -1,0 +1,6 @@
+com\mar\inventory\domain\FlightInventory.class
+com\mar\inventory\InventoryServiceApplication.class
+com\mar\inventory\api\HealthController.class
+com\mar\inventory\api\InventoryController.class
+com\mar\inventory\repository\InventoryRepository.class
+com\mar\inventory\service\InventoryService.class
