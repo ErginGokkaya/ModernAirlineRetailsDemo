@@ -39,6 +39,7 @@ public class OrderService {
 
         try {
             String payload = objectMapper.writeValueAsString(event);
+            System.out.println(">>> Creating order and writing outbox event");
 
             OutboxEvent outboxEvent = new OutboxEvent(
                     "Order",
@@ -52,6 +53,7 @@ public class OrderService {
         } catch (JsonProcessingException e) {
             throw new RuntimeException("Failed to serialize event", e);
         }
+        System.out.println(">>> Writing outbox event for order " + order.getId());
 
         return order;
     }

@@ -1,16 +1,39 @@
+version: '3.8'
+
 services:
+
   postgres:
     image: postgres:16
     container_name: mar-postgres
-    restart: unless-stopped
     environment:
+      POSTGRES_DB: mar_db
       POSTGRES_USER: mar_user
       POSTGRES_PASSWORD: mar_pass
-      POSTGRES_DB: mar_db
     ports:
       - "5432:5432"
     volumes:
       - mar_postgres_data:/var/lib/postgresql/data
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: mar-zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: mar-kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
 volumes:
   mar_postgres_data:
